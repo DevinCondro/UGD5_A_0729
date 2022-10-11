@@ -10,7 +10,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item">
-                        <a href="{{ url('golongan')}}">Golongan</a>
+                        <a href="{{ url('pegawai')}}">Golongan</a>
                     </li>
                     <li class="breadcrumb-item active">Index</li>
                 </ol>
@@ -29,16 +29,18 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="table-responsive p-0">
-                            <table class="table table-hover textnowrap">
-                                <thead>
-                                    <tr>
-                                        <th class="text-center">NIP Pegawai</th>
-                                        <th class="text-center">Golongan</th>
-                                        <th class="text-center">Gaji Pokok</th>
-                                        <th class="text-center">Tunjangan Keluarga</th>
-                                        <th class="text-center">Tunjangan Transport</th>
-                                        <th class="text-center">Tunjangan Makan</th>
+                        <a href="{{ route('golongan.create') }}" class="btn btn-md btn-success mb-3">TAMBAH GOLONGAN</a>
+                            <div class="table-responsive p-0">
+                                <table class="table table-hover textnowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Nomor Induk Pegawai</th>
+                                            <th class="text-center">Golongan</th>
+                                            <th class="text-center">Gaji Pokok</th>
+                                            <th class="text-center">Tunjangan Keluarga</th>
+                                            <th class="text-center">Tunjangan Transport</th>
+                                            <th class="text-center">Tunjangan Makan</th>
+                                            <th class="text-center">Aksi</th>
 </tr>
 </thead>
 <tbody>
@@ -47,15 +49,15 @@
         <td class="text-center">{{
             $item->pegawai_id }}</td>
             <td class="text-center">{{
-                $item->nama_golongan }}</td>
-                <td class="text-center">
-                    @currency($item->gaji_pokok)</td>
-                    <td class="text-center">
-                        @currency($item->tunjangan_keluarga)</td>
-                        <td class="text-center">
-                            @currency($item->tunjangan_transport)</td>
-                            <td class="text-center">
-                                @currency($item->tunjangan_makan)</td>
+                $item->golongan }}</td>
+                <td class="text-center">{{
+                    $item->gaji_pokok}}</td>
+                    <td class="text-center">{{
+                        $item->tunjangan_keluarga }}</td>
+                        <td class="text-center">{{
+                            $item->tunjangan_transport }}</td>
+                            <td class="text-center">{{
+                                $item->tunjangan_makan}}</td>
                                 
                 </tr>
                 @empty
@@ -65,17 +67,14 @@
                 @endforelse
             </tbody>
         </table>
-        <div class="d-flex justify-content-center "  >
-            {{$golongan->withQueryString()->links('pagination::bootstrap-5')}}
+        <div class="d-flex justify-content-center">
+            {!! $pegawai->links() !!}
         </div>
-    </div>
-    
+     </div>
 </div>
 <!-- /.card-body -->
-
 </div>
 <!-- /.card -->
-
 </div>
 <!-- /.col-md-6 -->
 </div>
